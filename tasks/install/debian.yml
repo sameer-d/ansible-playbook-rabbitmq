@@ -4,6 +4,7 @@
 - name: "add the official rabbitmq repository's key"
   apt_key: url=https://www.rabbitmq.com/rabbitmq-signing-key-public.asc
   when: not rabbitmq_os_package
+  environment:
 
 - name: add the official rabbitmq repository
   copy:
@@ -15,6 +16,7 @@
 
 - name: install rabbitmq-server
   apt: name=rabbitmq-server update_cache=yes
+  environment:
 
 - name: enable rabbitmq-server to survive reboot
   service: name=rabbitmq-server enabled=yes
